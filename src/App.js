@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar';
 
 const history = createHistory();
 const getPath = () => history.location.pathname;
@@ -27,14 +26,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          Hello, Heroku! { this.state.path }
-        </p>
+      <div>
+        <Navbar />
+        <p>Hello, Heroku! { this.state.path }</p>
       </div>
     );
   }
