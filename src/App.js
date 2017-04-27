@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
+import createHistory from 'history/createBrowserHistory';
+
 import logo from './logo.svg';
 import './App.css';
 
+const history = createHistory();
+const getPath = () => history.location.pathname;
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      path: getPath(),
+    };
+    this.unlistenFromHistory = null;
+  }
+
+  componentDidMount() {
+    this.unlistenFromHistory = history.listen(() => this.setState({ path: getPath() }));
+  }
+
+  componentWillUnmount() {
+    this.unlistenFromHistory();
+    this.unlistenFromHistory = null;
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,7 +33,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          Hello, Heroku!
+          Hello, Heroku! { this.state.path }
         </p>
       </div>
     );
