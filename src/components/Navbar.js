@@ -23,8 +23,7 @@ class NavbarComponent extends PureComponent {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav onSelect={this.onSelect}>
-          <NavItem eventKey={'first'}>First</NavItem>
-          <NavItem eventKey={'second'}>Second</NavItem>
+          <NavItem eventKey={'college-skills'}>College Skills</NavItem>
         </Nav>
       </Navbar>
     );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 
 import Homepage from './pages/Homepage';
+import CollegeSkills from './pages/CollegeSkills';
 import NotFound from './pages/NotFound';
 import Navbar from './Navbar';
 
@@ -10,6 +11,7 @@ const getPath = () => history.location.pathname;
 
 const routes = {
   '/': <Homepage history={history} />,
+  '/college-skills': <CollegeSkills history={history} />,
 };
 
 const getPage = path => routes[path] || <NotFound />;
