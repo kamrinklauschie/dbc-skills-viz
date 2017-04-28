@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar history={history} />
         <p>Hello, Heroku! { this.state.path }</p>
       </div>
     );
