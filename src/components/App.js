@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 
-import logo from './logo.svg';
-import './App.css';
+import Homepage from './pages/Homepage';
+import NotFound from './pages/NotFound';
+import Navbar from './Navbar';
 
 const history = createHistory();
 const getPath = () => history.location.pathname;
+
+const routes = {
+  '/': <Homepage history={history} />,
+};
+
+const getPage = path => routes[path] || <NotFound />;
 
 class App extends Component {
   constructor(props) {
@@ -26,15 +33,11 @@ class App extends Component {
   }
 
   render() {
+    const page = getPage(this.state.path);
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          Hello, Heroku! { this.state.path }
-        </p>
+      <div>
+        <Navbar history={history} />
+        {page}
       </div>
     );
   }
