@@ -5,6 +5,15 @@ import Link from './Link';
 import historyProp from './types/history';
 
 class NavbarComponent extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.onSelect = this.onSelect.bind(this);
+  }
+
+  onSelect(eventKey) {
+    this.props.history.push(`/${eventKey}`);
+  }
+
   render() {
     return (
       <Navbar>
@@ -13,9 +22,9 @@ class NavbarComponent extends PureComponent {
             <Link path={'/'} history={this.props.history}>DBC-Skills</Link>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
-          <NavItem><Link path={'/first/'} history={this.props.history}>First</Link></NavItem>
-          <NavItem><Link path={'/second/'} history={this.props.history}>Second</Link></NavItem>
+        <Nav onSelect={this.onSelect}>
+          <NavItem eventKey={'first'}>First</NavItem>
+          <NavItem eventKey={'second'}>Second</NavItem>
         </Nav>
       </Navbar>
     );
